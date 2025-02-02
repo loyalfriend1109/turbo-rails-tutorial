@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   scan_ruby:
@@ -16,11 +16,29 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: '3.1.1'
           bundler-cache: true
+          bundler: '2.6.3'
+
+      - name: Install gems
+        run: |
+          bundle config set --local without 'development'
+          bundle install
+
+      - name: Update bundler
+        run: |
+          gem update --system
+          gem install bundler
+          bundle config set --local frozen false
+          bundle update --bundler
+
+      - name: Make files executable
+        run: |
+          sed -i '1s/ruby.exe/ruby/' bin/*
+          chmod +x bin/*
 
       - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+        run: bin/brakeman --no-pager --ignore-config config/brakeman.ignore
 
   lint:
     runs-on: ubuntu-latest
@@ -31,11 +49,27 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: '3.1.1'
           bundler-cache: true
+          bundler: '2.6.3'
 
-      - name: Lint code for consistent style
-        run: bin/rubocop -f github
+      - name: Update bundler
+        run: |
+          gem update --system
+          gem install bundler
+          bundle config set --local frozen false
+          bundle update --bundler
+
+      - name: Make files executable
+        run: |
+          sed -i '1s/ruby.exe/ruby/' bin/*
+          chmod +x bin/*
+
+      - name: Run linters
+        run: |
+          bundle config set --local without 'development'
+          bundle install
+          bin/rubocop -f github
 
   test:
     runs-on: ubuntu-latest
@@ -50,15 +84,11 @@ jobs:
           - 5432:5432
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
 
-      # redis:
-      #   image: redis
-      #   ports:
-      #     - 6379:6379
-      #   options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
       - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips postgresql-client
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips postgresql-client
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -66,15 +96,40 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: '3.1.1'
           bundler-cache: true
+          bundler: '2.6.3'
+
+      - name: Install gems
+        run: |
+          bundle config set --local without 'development'
+          bundle install
+
+      - name: Update bundler
+        run: |
+          gem update --system
+          gem install bundler
+          bundle config set --local frozen false
+          bundle update --bundler
+
+      - name: Make files executable
+        run: |
+          sed -i '1s/ruby.exe/ruby/' bin/*
+          chmod +x bin/*
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: stable
 
       - name: Run tests
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
-          # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test test:system
+        run: |
+          bin/rails db:test:prepare
+          bin/rails test
+          bin/rails test:system
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
