@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :set_quote, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @quotes = Quote.ordered
@@ -14,7 +14,7 @@ class QuotesController < ApplicationController
 
   def create
     @quote = Quote.new(quote_params)
-  
+
     if @quote.save
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: "Quote was successfully created." }
@@ -35,7 +35,7 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
-  
+
     respond_to do |format|
       format.html { redirect_to quotes_path, notice: "Quote was successfully destroyed." }
       format.turbo_stream
@@ -51,5 +51,4 @@ class QuotesController < ApplicationController
   def quote_params
     params.require(:quote).permit(:name)
   end
-
 end
