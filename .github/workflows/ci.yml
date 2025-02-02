@@ -19,6 +19,12 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Update bundler
+        run: |
+          gem update --system
+          gem install bundler
+          bundle update --bundler
+
       - name: Make files executable
         run: |
           sed -i '1s/ruby.exe/ruby/' bin/*
@@ -38,6 +44,12 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Update bundler
+        run: |
+          gem update --system
+          gem install bundler
+          bundle update --bundler
 
       - name: Make files executable
         run: |
@@ -72,6 +84,12 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Update bundler
+        run: |
+          gem update --system
+          gem install bundler
+          bundle update --bundler
 
       - name: Make files executable
         run: |
