@@ -173,7 +173,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.8)
+    rack (3.1.9)
     rack-session (2.1.0)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -255,7 +255,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simple_form (5.1.0)
+    simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
     sprockets (4.2.1)
@@ -318,7 +318,7 @@ DEPENDENCIES
   rails (~> 7.2.2, >= 7.2.2.1)
   rubocop-rails-omakase
   selenium-webdriver
-  simple_form (~> 5.1.0)
+  simple_form (~> 5.3.1)
   sprockets-rails
   stimulus-rails
   turbo-rails (~> 1.0)
