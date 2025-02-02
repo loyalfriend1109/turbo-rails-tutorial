@@ -16,9 +16,9 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.2'
+          ruby-version: "3.2.2"
           bundler-cache: true
-          bundler: '2.6.3'
+          bundler: "2.6.3"
 
       - name: Update RubyGems
         run: |
@@ -60,9 +60,9 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.2'
+          ruby-version: "3.2.2"
           bundler-cache: true
-          bundler: '2.6.3'
+          bundler: "2.6.3"
 
       - name: Update RubyGems
         run: |
@@ -118,9 +118,9 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.2'
+          ruby-version: "3.2.2"
           bundler-cache: true
-          bundler: '2.6.3'
+          bundler: "2.6.3"
 
       - name: Update RubyGems
         run: |
