@@ -20,7 +20,9 @@ jobs:
           bundler-cache: true
 
       - name: Make files executable
-        run: chmod +x bin/*
+        run: |
+          sed -i '1s/ruby.exe/ruby/' bin/*
+          chmod +x bin/*
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
@@ -38,7 +40,9 @@ jobs:
           bundler-cache: true
 
       - name: Make files executable
-        run: chmod +x bin/*
+        run: |
+          sed -i '1s/ruby.exe/ruby/' bin/*
+          chmod +x bin/*
 
       - name: Lint code for consistent style
         run: bin/rubocop -f github
@@ -70,7 +74,9 @@ jobs:
           bundler-cache: true
 
       - name: Make files executable
-        run: chmod +x bin/*
+        run: |
+          sed -i '1s/ruby.exe/ruby/' bin/*
+          chmod +x bin/*
 
       - name: Run tests
         env:
