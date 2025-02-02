@@ -16,8 +16,14 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: '3.1.1'
           bundler-cache: true
+          bundler: '2.6.3'
+
+      - name: Install gems
+        run: |
+          bundle config set --local without 'development'
+          bundle install
 
       - name: Update bundler
         run: |
@@ -43,8 +49,9 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: '3.1.1'
           bundler-cache: true
+          bundler: '2.6.3'
 
       - name: Update bundler
         run: |
@@ -84,8 +91,19 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: '3.1.1'
           bundler-cache: true
+          bundler: '2.6.3'
+
+      - name: Install gems
+        run: |
+          bundle config set --local without 'development'
+          bundle install
+
+      - name: Install gems
+        run: |
+          bundle config set --local without 'development'
+          bundle install
 
       - name: Update bundler
         run: |
