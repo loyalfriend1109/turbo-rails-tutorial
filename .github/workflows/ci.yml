@@ -25,6 +25,12 @@ jobs:
           gem update --system 3.3.22
           bundle install
 
+      - name: Update platforms
+        run: |
+          bundle lock --add-platform x86_64-linux
+          bundle lock --add-platform ruby
+          bundle install
+
       - name: Install gems
         run: |
           bundle config set --local without 'development'
@@ -61,6 +67,12 @@ jobs:
       - name: Update RubyGems
         run: |
           gem update --system 3.3.22
+          bundle install
+
+      - name: Update platforms
+        run: |
+          bundle lock --add-platform x86_64-linux
+          bundle lock --add-platform ruby
           bundle install
 
       - name: Update bundler
@@ -113,6 +125,12 @@ jobs:
       - name: Update RubyGems
         run: |
           gem update --system 3.3.22
+          bundle install
+
+      - name: Update platforms
+        run: |
+          bundle lock --add-platform x86_64-linux
+          bundle lock --add-platform ruby
           bundle install
 
       - name: Install gems
