@@ -33,7 +33,7 @@ jobs:
 
       - name: Install gems
         run: |
-          bundle config set --local without 'development'
+          bundle config set --local without "development"
           bundle install
 
       - name: Update bundler
@@ -45,7 +45,7 @@ jobs:
 
       - name: Make files executable
         run: |
-          sed -i '1s/ruby.exe/ruby/' bin/*
+          sed -i "1s/ruby.exe/ruby/" bin/*
           chmod +x bin/*
 
       - name: Scan for common Rails security vulnerabilities using static analysis
@@ -84,12 +84,12 @@ jobs:
 
       - name: Make files executable
         run: |
-          sed -i '1s/ruby.exe/ruby/' bin/*
+          sed -i "1s/ruby.exe/ruby/" bin/*
           chmod +x bin/*
 
       - name: Run linters
         run: |
-          bundle config set --local without 'development'
+          bundle config set --local without "development"
           bundle install
           bin/rubocop -f github
 
@@ -135,7 +135,7 @@ jobs:
 
       - name: Install gems
         run: |
-          bundle config set --local without 'development'
+          bundle config set --local without "development"
           bundle install
 
       - name: Update bundler
@@ -147,7 +147,7 @@ jobs:
 
       - name: Make files executable
         run: |
-          sed -i '1s/ruby.exe/ruby/' bin/*
+          sed -i "1s/ruby.exe/ruby/" bin/*
           chmod +x bin/*
 
       - name: Setup Chrome

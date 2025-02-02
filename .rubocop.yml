@@ -9,3 +9,5 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+  Exclude:
+    - '.github/workflows/**/*'
