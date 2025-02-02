@@ -2,16 +2,17 @@
 @import 'mixins/media';
 
 // Configuration
-@import 'config/variables';
 @import 'config/reset';
+@import 'config/variables';
 
 // Components
 @import 'components/btn';
-@import 'components/error_message';
 @import 'components/form';
-@import 'components/visually_hidden';
 @import 'components/quote';
+@import 'components/error_message';
+@import 'components/visually_hidden';
+@import 'components/turbo_progress_bar';
 
 // Layouts
-@import 'layouts/container';
 @import 'layouts/header';
+@import 'layouts/container';
