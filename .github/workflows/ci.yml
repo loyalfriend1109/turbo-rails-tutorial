@@ -91,7 +91,7 @@ jobs:
         run: |
           bundle config set --local without "development"
           bundle install
-          bin/rubocop -f github
+          bin/rubocop -f json
 
   test:
     runs-on: ubuntu-latest
