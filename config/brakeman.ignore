@@ -3,7 +3,7 @@
     {
       "warning_type": "Unmaintained Dependency",
       "warning_code": 121,
-      "fingerprint": "your_fingerprint_here",
+      "fingerprint": "715ee6d743a8af33c7b930d728708ce19c765fb40e2ad9d2b974db04d92dc7d1",
       "check_name": "EOLRuby",
       "message": "Support for Ruby 3.1.1 ends on 2025-03-31",
       "file": ".ruby-version",
