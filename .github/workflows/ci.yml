@@ -23,6 +23,7 @@ jobs:
         run: |
           gem update --system
           gem install bundler
+          bundle config set --local frozen false
           bundle update --bundler
 
       - name: Make files executable
@@ -49,6 +50,7 @@ jobs:
         run: |
           gem update --system
           gem install bundler
+          bundle config set --local frozen false
           bundle update --bundler
 
       - name: Make files executable
@@ -89,6 +91,7 @@ jobs:
         run: |
           gem update --system
           gem install bundler
+          bundle config set --local frozen false
           bundle update --bundler
 
       - name: Make files executable
