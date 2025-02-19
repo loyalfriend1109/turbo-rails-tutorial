@@ -62,4 +62,4 @@ group :test do
 end
 
 gem "simple_form", "~> 5.3.1"
-gem "nokogiri", "~> 1.18.2"
+gem "nokogiri", "~> 1.18.3"
